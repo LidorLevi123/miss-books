@@ -1,0 +1,16 @@
+.app-footer {
+    position: fixed;
+    bottom: 1px;
+
+    display: flex;
+    align-items: center;
+    height: 4vh;
+    width: 97%;
+
+    padding: 10px;
+    background-color: var(--columbia-blue);
+}
+
+.app-footer p {
+    margin: 0;
+}
