@@ -3,12 +3,12 @@
     bottom: 1px;
 
     display: flex;
+    justify-content: center;
     align-items: center;
-    height: 4vh;
-    width: 97%;
+    width: 100%;
 
     padding: 10px;
-    background-color: var(--columbia-blue);
+    background-color: var(--clr2);
 }
 
 .app-footer p {

@@ -2,10 +2,10 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 6vh;
+    height: 10vh;
 
     padding: 10px;
-    background-color: var(--columbia-blue);
+    background-color: var(--clr2);
 }
 
 .app-header nav {
