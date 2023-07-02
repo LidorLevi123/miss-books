@@ -1,0 +1,8 @@
+.book-preview {
+    display: grid;
+    height: 100%;
+}
+
+.book-preview > *:last-child {
+    place-self: end;
+}

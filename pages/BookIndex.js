@@ -1,9 +1,11 @@
 import { bookService } from '../services/book.service.js'
 
+import BookList from '../cmps/BookList.js'
+
 export default {
     template: `
         <section class="book-index">
-            <pre>{{ books }}</pre>
+            <BookList :books="books"/>
         </section>
     `,
     data() {
@@ -12,7 +14,7 @@ export default {
         }
     },
     methods: {
-        
+
     },
     computed: {
         // filteredBooks() {
@@ -25,6 +27,6 @@ export default {
             .then(books => this.books = books)
     },
     components: {
-        
+        BookList,
     }
 }
