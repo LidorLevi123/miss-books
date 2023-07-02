@@ -1,6 +1,6 @@
 .app-footer {
-    position: fixed;
-    bottom: 1px;
+    position: sticky;
+    bottom: 0px;
 
     display: flex;
     justify-content: center;
