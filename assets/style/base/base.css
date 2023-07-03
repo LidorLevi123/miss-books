@@ -27,6 +27,10 @@ a {
     color: inherit;
 }
 
+button {
+    cursor: pointer;
+}
+
 ul {
     list-style-type: none;
     padding: 0;
