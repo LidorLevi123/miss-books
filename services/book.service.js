@@ -25,26 +25,6 @@ window.bookService = bookService
 
 function query() {
     return storageService.query(BOOK_KEY)
-    // .then(books => {
-    //     if (gFilterBy.txt) {
-    //         const regex = new RegExp(gFilterBy.txt, 'i')
-    //         books = books.filter(book => regex.test(book.vendor))
-    //     }
-    //     if (gFilterBy.minSpeed) {
-    //         books = books.filter(book => book.maxSpeed >= gFilterBy.minSpeed)
-    //     }
-    //     if (gPageIdx !== undefined) {
-    //         const startIdx = gPageIdx * PAGE_SIZE
-    //         books = books.slice(startIdx, startIdx + PAGE_SIZE)
-    //     }
-    //     if (gSortBy.maxSpeed !== undefined) {
-    //         books.sort((c1, c2) => (c1.maxSpeed - c2.maxSpeed) * gSortBy.maxSpeed)
-    //     } else if (gSortBy.vendor !== undefined) {
-    //         books.sort((c1, c2) => c1.vendor.localeCompare(c2.vendor) * gSortBy.vendor)
-    //     }
-
-    //     return books
-    // })
 }
 
 function get(bookId) {
@@ -65,28 +45,28 @@ function save(book) {
 
 function getEmptyBook(title = '', price = 0) {
     return {
-        id: '',
-        title,
-        description: '',
-        thumbnail: '',
-        listPrice: {
-            amount: price,
-            currencyCode: '',
-            isOnSale: false
-        }
+    id: '',
+    title,
+    subtitle: '',
+    authors: [],
+    publishedDate: 0,
+    description: '',
+    pageCount: 0,
+    categories: [],
+    thumbnail: 'http://coding-academy.org/books-photos/17.jpg',
+    language: 'sp',
+    listPrice: {
+      amount: price,
+      currencyCode: 'USD',
+      isOnSale: true
     }
+  }
 
 }
 
 function getFilterBy() {
     return { ...gFilterBy }
 }
-
-// function setFilterBy(filterBy = {}) {
-//     if (filterBy.txt !== undefined) gFilterBy.txt = filterBy.txt
-//     if (filterBy.minSpeed !== undefined) gFilterBy.minSpeed = filterBy.minSpeed
-//     return gFilterBy
-// }
 
 function getNextBookId(bookId) {
     return storageService.query(BOOK_KEY)
@@ -96,19 +76,6 @@ function getNextBookId(bookId) {
             return books[idx + 1].id
         })
 }
-
-// function getBookCountBySpeedMap() {
-//     return storageService.query(BOOK_KEY)
-//         .then(books => {
-//             const bookCountBySpeedMap = books.reduce((map, book) => {
-//                 if (book.maxSpeed < 120) map.slow++
-//                 else if (book.maxSpeed < 200) map.normal++
-//                 else map.fast++
-//                 return map
-//             }, { slow: 0, normal: 0, fast: 0 })
-//             return bookCountBySpeedMap
-//         })
-// }
 
 function _createBooks() {
     let books = utilService.loadFromStorage(BOOK_KEY)

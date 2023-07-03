@@ -7,7 +7,10 @@ export default {
         <section class="book-list">
             <ul>
                 <li v-for="book in books">
-                    <button title="Remove Book" class="btn-remove" @click="onRemoveBook(book.id)">X</button>
+                    <section class="actions">
+                        <button title="Edit Book" class="btn-edit" @click="onEditBook(book.id)">🖊</button>
+                        <button title="Remove Book" class="btn-remove" @click="onRemoveBook(book.id)">✖</button>
+                    </section>
                     <BookPreview :book="book"/>
                 </li>
             </ul>
@@ -17,6 +20,9 @@ export default {
     methods: {
         onRemoveBook(bookId) {
             this.$emit('remove', bookId)
+        },
+        onEditBook(bookId) {
+            this.$router.push(`/books/edit/${bookId}`)
         }
     },
 

@@ -1,0 +1,12 @@
+.book-edit {
+    display: grid;
+    place-items: center;
+    gap: 5px;
+    padding: 10px;
+    background-color: var(--clr3);
+    color: whitesmoke;
+}
+
+.book-edit button {
+    justify-self: end;
+}

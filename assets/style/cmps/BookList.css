@@ -21,19 +21,29 @@
     scale: 1.02;
 }
 
-.book-list .btn-remove {
+.book-list .actions {
     position: absolute;
-    top: 5px;
+    top: 3px;
     right: 5px;
+}
 
+.book-list .actions > * {
     background: red;
     border-radius: 50%;
     font-weight: bold;
-    pointer-events: none;
     opacity: 0;
+    transition: opacity .1s;
 }
 
-.book-list ul li:hover .btn-remove {
-    pointer-events: all;
+.book-list .btn-remove {
+    margin-inline-start: .3em;
+    background: red;
+}
+
+.book-list .btn-edit {
+    background: rgb(0, 181, 0);
+}
+
+.book-list ul li:hover .actions > * {
     opacity: 1;
 }

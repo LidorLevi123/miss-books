@@ -1,8 +1,3 @@
-.book-filter {
-    margin-block-start: 20px;
-    margin-inline-start: 10px;
-}
-
 .book-filter input {
     height: 3em;
     border-radius: .5em;

@@ -7,7 +7,10 @@ import BookList from '../cmps/BookList.js'
 export default {
     template: `
         <section class="book-index">
-            <BookFilter @filter="setFilterBy"/>
+            <div>
+                <BookFilter @filter="setFilterBy"/>
+                <RouterLink to="/books/edit" class="btn-add">Add Book</RouterLink> 
+            </div>
             <BookList 
                 :books="filteredBooks"
                 @remove="removeBook"/>
@@ -40,7 +43,7 @@ export default {
                 .then(() => {
                     const idx = this.books.findIndex(book => book.id === bookId)
                     this.books.splice(idx, 1)
-                    showSuccessMsg('book removed')
+                    showSuccessMsg('Book Removed!')
                 })
                 .catch(err => {
                     showErrorMsg('Cannot remove book')

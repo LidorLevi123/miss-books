@@ -2,13 +2,13 @@ export default {
     props: ['book'],
 
     template: `
-        <article @click="goToEditPage" class="book-preview">
+        <article @click="goToDetailsPage" class="book-preview">
             <img :src="book.thumbnail" alt="">
         </article>
     `,
 
     methods: {
-        goToEditPage() {
+        goToDetailsPage() {
             this.$router.push(`/books/${this.book.id}`)
         }
     }

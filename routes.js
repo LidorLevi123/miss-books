@@ -1,8 +1,8 @@
+import BookIndex from './pages/BookIndex.js'
 import HomePage from './pages/HomePage.js'
 import AboutPage from './pages/AboutPage.js'
-import BookIndex from './pages/BookIndex.js'
 import BookDetails from './pages/BookDetails.js'
-// import BookEdit from './pages/BookEdit.js'
+import BookEdit from './pages/BookEdit.js'
 
 const { createRouter, createWebHashHistory } = VueRouter
 
@@ -30,17 +30,17 @@ const options = {
         {
             path: '/about',
             component: AboutPage,
-            // children: [
-            //     {
-            //         path: 'team',
-            //         component: AboutTeam,
-            //     },
-            //     {
-            //         path: 'goals',
-            //         component: AboutGoals,
-            //     }
+            children: [
+                {
+                    path: 'team',
+                    component: AboutTeam,
+                },
+                {
+                    path: 'goals',
+                    component: AboutGoals,
+                }
 
-            // ]
+            ]
         },
         {
             path: '/books',
@@ -50,10 +50,10 @@ const options = {
             path: '/books/:bookId',
             component: BookDetails
         },
-        // {
-        //     path: '/book/edit/:bookId?',
-        //     component: BookEdit
-        // }
+        {
+            path: '/books/edit/:bookId?',
+            component: BookEdit
+        }
 
     ]
 }

@@ -4,8 +4,6 @@
 /* Base */
 @import 'base/base.css';
 @import 'base/layout.css';
-/* @import 'base/helpers.css';
-@import 'base/forms.css'; */
 
 /* Components */
 @import 'cmps/UserMsg.css';
@@ -14,6 +12,7 @@
 
 @import 'cmps/BookIndex.css';
 @import 'cmps/BookDetails.css';
+@import 'cmps/BookEdit.css';
 @import 'cmps/BookFilter.css';
 @import 'cmps/BookList.css';
 @import 'cmps/BookPreview.css';
