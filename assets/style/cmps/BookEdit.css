@@ -4,7 +4,15 @@
     gap: 5px;
     padding: 10px;
     background-color: var(--clr3);
-    color: whitesmoke;
+    color: var(--clr1);
+}
+
+.book-edit > *:first-child {
+    font-size: 2rem;
+}
+
+.book-edit > input {
+    padding: 0.4em;
 }
 
 .book-edit button {

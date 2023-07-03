@@ -43,7 +43,7 @@ function save(book) {
     }
 }
 
-function getEmptyBook(title = '', price = 0) {
+function getEmptyBook(title = '', price = '') {
     return {
     id: '',
     title,
