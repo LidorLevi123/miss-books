@@ -10,6 +10,8 @@
 /* Components */
 @import 'cmps/AppHeader.css';
 @import 'cmps/AppFooter.css';
+
 @import 'cmps/BookIndex.css';
+@import 'cmps/BookFilter.css';
 @import 'cmps/BookList.css';
 @import 'cmps/BookPreview.css';
