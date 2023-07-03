@@ -3,9 +3,7 @@ export default {
 
     template: `
         <article class="book-preview">
-            <h2>{{ book.title }}</h2>
-            <h3>{{ book.subtitle}}</h3>
-            <p>{{ book.listPrice.amount }}$</p>
+            <img :src="book.thumbnail" alt="">
         </article>
     `,
 }

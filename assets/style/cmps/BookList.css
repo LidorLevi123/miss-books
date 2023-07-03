@@ -4,6 +4,7 @@
     gap: 10px;
     padding: 10px;
 }
+
 .book-list ul li {
     padding: 10px;
     background-color: var(--clr3);
@@ -18,4 +19,21 @@
 
 .book-list ul li:hover {
     scale: 1.02;
+}
+
+.book-list .btn-remove {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+
+    background: red;
+    border-radius: 50%;
+    font-weight: bold;
+    pointer-events: none;
+    opacity: 0;
+}
+
+.book-list ul li:hover .btn-remove {
+    pointer-events: all;
+    opacity: 1;
 }
