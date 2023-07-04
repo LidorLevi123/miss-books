@@ -10,6 +10,7 @@ var gFilterBy = { txt: '', minSpeed: 0 }
 // var gPageIdx
 
 _createBooks()
+_setBookNextPrevId()
 
 export const bookService = {
     query,
@@ -19,6 +20,7 @@ export const bookService = {
     getEmptyBook,
     getNextBookId,
     getFilterBy,
+    addReview,
     // setFilterBy,
 }
 window.bookService = bookService
@@ -45,22 +47,22 @@ function save(book) {
 
 function getEmptyBook(title = '', price = '') {
     return {
-    id: '',
-    title,
-    subtitle: '',
-    authors: [],
-    publishedDate: null,
-    description: '',
-    pageCount: null,
-    categories: [],
-    thumbnail: 'http://coding-academy.org/books-photos/17.jpg',
-    language: 'sp',
-    listPrice: {
-      amount: price,
-      currencyCode: 'USD',
-      isOnSale: true
+        id: '',
+        title,
+        subtitle: '',
+        authors: [],
+        publishedDate: null,
+        description: '',
+        pageCount: null,
+        categories: [],
+        thumbnail: 'http://coding-academy.org/books-photos/17.jpg',
+        language: 'sp',
+        listPrice: {
+            amount: price,
+            currencyCode: 'USD',
+            isOnSale: true
+        }
     }
-  }
 
 }
 
@@ -77,6 +79,31 @@ function getNextBookId(bookId) {
         })
 }
 
+function addReview(bookId, review) {
+    return get(bookId)
+        .then(book => {
+            if (!book.reviews) book.reviews = []
+            review.id = utilService.makeId()
+            book.reviews.push(review)
+            return save(book)
+        })
+}
+
+function _setBookNextPrevId() {
+    query()
+        .then(books => {
+            books.forEach((book, idx) => {
+                if (idx !== books.length - 1) book.nextBookId = books[idx + 1].id
+                else book.nextBookId = books[0].id
+
+                if (idx !== 0) book.prevBookId = books[idx - 1].id
+                else book.prevBookId = books[books.length - 1].id
+
+            })
+            utilService.saveToStorage(BOOK_KEY, books)
+        })
+}
+
 function _createBooks() {
     let books = utilService.loadFromStorage(BOOK_KEY)
     if (!books || !books.length) {
@@ -85,7 +112,6 @@ function _createBooks() {
         // books.push(_createBook('Lord of the Rings', 120))
         // books.push(_createBook('Pride and Prejudice', 100))
         // books.push(_createBook('The Great Gatsby', 150))
-        utilService.saveToStorage(BOOK_KEY, books)
     }
 }
 

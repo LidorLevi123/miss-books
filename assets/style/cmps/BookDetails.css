@@ -65,6 +65,17 @@
     width: 100px;
 }
 
+.book-details .book-paging {
+    position: absolute;
+    bottom: 10px;
+
+    display: flex;
+    justify-content: space-between;
+    width: 96%;
+
+    color: whitesmoke;
+}
+
 .book-details .price .red {
     color: red;
 }

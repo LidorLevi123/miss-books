@@ -1,5 +1,7 @@
 import { bookService } from '../services/book.service.js'
 
+import AddReview from '../cmps/AddReview.js'
+
 export default {
     template: `
         <RouterLink to="/books">Back to List</RouterLink>
@@ -14,16 +16,46 @@ export default {
                 <p>{{ book.description }}</p>
                 <p>Pages: {{ bookPageCount }}</p>
                 <p>Publish Date: {{ bookPublishDate }}</p>
+                <div class="book-paging">
+                    <RouterLink :to="/books/ + book.nextBookId">To Previous Book</RouterLink>
+                    <RouterLink :to="/books/ + book.prevBookId">To Next Book</RouterLink>
+                </div>
             </div>
             <div class="price">
                 <span :class="priceClass">Price: $\{{ book.listPrice.amount }}</span>
             </div>
         </section>
+        <AddReview :book="book"/>
     `,
 
     data() {
         return {
             book: null
+        }
+    },
+
+    created() {
+        this.loadBook()
+    },
+
+    methods: {
+        loadBook() {
+            const { bookId } = this.$route.params
+            bookService.get(bookId)
+                .then(book => {
+                    this.book = book
+                    console.log(book)
+                })
+                .catch(err => {
+                    alert('Cannot load book')
+                    this.$router.push('/books')
+                })
+        }
+    },
+
+    watch: {
+        bookId() {
+            this.loadBook()
         }
     },
 
@@ -38,8 +70,8 @@ export default {
             let readingLvl = ''
             let pageCount = this.book.pageCount
 
-            if(pageCount > 500) readingLvl = 'Serious'
-            else if(pageCount > 200) readingLvl = 'Descent'
+            if (pageCount > 500) readingLvl = 'Serious'
+            else if (pageCount > 200) readingLvl = 'Descent'
             else readingLvl = 'Light'
 
             return pageCount + ` | ${readingLvl} Reading`
@@ -50,8 +82,8 @@ export default {
             let yearDiff = currYear - bookYear
 
             let bookState = ''
-            if(yearDiff > 10) bookState = 'Vintage'
-            else if(yearDiff < 1) bookState = 'New'
+            if (yearDiff > 10) bookState = 'Vintage'
+            else if (yearDiff < 1) bookState = 'New'
             else bookState = 'Basic'
 
             return bookYear + ` | ${bookState}`
@@ -63,18 +95,13 @@ export default {
                 green: bookPrice < 20,
                 orange: bookPrice >= 20 && bookPrice <= 150
             }
+        },
+        bookId() {
+            return this.$route.params.bookId
         }
     },
 
-    created() {
-        const {bookId} = this.$route.params
-        bookService.get(bookId)
-            .then(book => {
-                this.book = book
-            })
-            .catch(err => {
-                alert('Cannot load book')
-                this.$router.push('/books')
-            })
-    },
+    components: {
+        AddReview
+    }
 }
