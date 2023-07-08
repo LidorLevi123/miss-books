@@ -106,9 +106,3 @@ function _createBooks() {
         utilService.saveToStorage(BOOK_KEY, books)
     }
 }
-
-function _createBook(title, price = 250) {
-    const book = getEmptyBook(title, price)
-    book.id = utilService.makeId()
-    return book
-}
