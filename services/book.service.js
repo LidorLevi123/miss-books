@@ -1,13 +1,9 @@
 import { utilService } from './util.service.js'
 import { storageService } from './async-storage.service.js'
 
-import booksJson from '../assets/json/books.json' assert {type: 'json'};
+import booksJson from '../assets/json/books.json' assert {type: 'json'}
 
 const BOOK_KEY = 'bookDB'
-
-var gFilterBy = { txt: '', minSpeed: 0 }
-// var gSortBy = { vendor: 1 }
-// var gPageIdx
 
 _createBooks()
 _setBookNextPrevId()
@@ -21,7 +17,6 @@ export const bookService = {
     getNextBookId,
     getFilterBy,
     addReview,
-    // setFilterBy,
 }
 window.bookService = bookService
 
@@ -108,10 +103,7 @@ function _createBooks() {
     let books = utilService.loadFromStorage(BOOK_KEY)
     if (!books || !books.length) {
         books = booksJson
-        // books.push(_createBook('Harry Potter', 300))
-        // books.push(_createBook('Lord of the Rings', 120))
-        // books.push(_createBook('Pride and Prejudice', 100))
-        // books.push(_createBook('The Great Gatsby', 150))
+        utilService.saveToStorage(BOOK_KEY, books)
     }
 }
 

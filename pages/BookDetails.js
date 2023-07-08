@@ -44,7 +44,6 @@ export default {
             bookService.get(bookId)
                 .then(book => {
                     this.book = book
-                    console.log(book)
                 })
                 .catch(err => {
                     alert('Cannot load book')

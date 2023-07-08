@@ -34,7 +34,9 @@ export default {
 
     created() {
         bookService.query()
-            .then(books => this.books = books)
+            .then(books => {
+                return this.books = books
+            })
     },
 
     methods: {

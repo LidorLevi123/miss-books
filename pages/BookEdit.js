@@ -43,7 +43,6 @@ export default {
         save() {
             bookService.save(this.bookToEdit)
                 .then(savedbook => {
-                    console.log('Saved book', savedbook)
                     showSuccessMsg('Book saved!')
                     this.$router.push('/books')
                 })
